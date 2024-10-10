@@ -121,4 +121,11 @@ class AlbumController extends Controller
 
         return redirect()->route('albums.show', $album->id)->with('success', 'Image uploaded successfully!');
     }
+
+    public function showImage (Album $album, $id){
+        $media = $album->getMedia('albums');
+        $image = $media->where('id', $id)->first();
+
+        return view('albums.image-show', compact('album', 'image'));
+    }
 }

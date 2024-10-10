@@ -22,7 +22,9 @@ require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::resource('albums', AlbumController::class);
+
     Route::post('albums/{album}/upload', [AlbumController::class, 'upload'])->name('albums.upload');
+    Route::get('albums/{album}/image/{image}', [AlbumController::class, 'showImage'])->name('album.image.show');
 });
 
 
