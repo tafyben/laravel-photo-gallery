@@ -63,6 +63,14 @@
                                    href="{{route('album.image.show', [$album->id, $photo->id])}}">
                                     View
                                 </a>
+                                <form action="{{ route('album.image.destroy', [$album->id, $photo->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this album?');" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <x-primary-button type="submit" class="px-4 py-2 text-white bg-blue-300 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
+                                        Delete
+                                    </x-primary-button>
+                                </form>
 
                             </div>
 

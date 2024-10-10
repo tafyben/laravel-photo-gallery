@@ -128,4 +128,12 @@ class AlbumController extends Controller
 
         return view('albums.image-show', compact('album', 'photo'));
     }
+
+    public function destroyImage (Album $album, $id){
+        $media = $album->getMedia('albums');
+        $photo = $media->where('id', $id)->first();
+        $photo->delete();
+
+        return view('albums.image-show', compact('album', 'photo'));
+    }
 }
