@@ -96,11 +96,11 @@ class AlbumController extends Controller
         // Find the album by ID
         $album = Album::findOrFail($id);
 
-        // Check if the album has any associated pictures
-        if ($album->pictures()->count() > 0) {
-            // Prevent deletion if there are pictures
-            return redirect()->route('albums.index')->with('error', 'Album cannot be deleted because it has pictures.');
-        }
+//        // Check if the album has any associated pictures
+//        if ($album->pictures()->count() > 0) {
+//            // Prevent deletion if there are pictures
+//            return redirect()->route('albums.index')->with('error', 'Album cannot be deleted because it has pictures.');
+//        }
 
         // Delete the album if no pictures are found
         $album->delete();
