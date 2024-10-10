@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Albums - Index') }}
+            {{ __('Albums - Create') }}
         </h2>
     </x-slot>
 
@@ -10,54 +10,32 @@
     <!-- component -->
     <div class="max-w-[720px] mx-auto p-4">
         <div class="relative overflow-hidden rounded-lg shadow-lg bg-white">
-            <table class="w-full table-auto text-left">
-                <thead>
-                <tr class="bg-gradient-to-r from-slate-50 to-slate-100">
-                    <th class="p-4 border-b border-slate-200 text-slate-700 font-medium text-left">
-                        ID
-                    </th>
-                    <th class="p-4 border-b border-slate-200 text-slate-700 font-medium text-left">
-                        Title
-                    </th>
-                    <th class="p-4 border-b border-slate-200 text-slate-700 font-medium text-left">
-                        Status
-                    </th>
-                    <th class="p-4 border-b border-slate-200 text-slate-700 font-medium text-left">
-                        Image
-                    </th>
-                    <td class="p-4 text-sm text-slate-600">
-                        Action
-                    </td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="hover:bg-slate-50 border-b border-slate-200 transition ease-in-out duration-150">
-                    <td class="p-4 text-sm font-semibold text-slate-800">
-                        PROJ1002
-                    </td>
-                    <td class="p-4 text-sm text-slate-600">
-                        Jane Smith
-                    </td>
-                    <td class="p-4 text-sm text-slate-600">
-                        Published
-                    </td>
-                    <td class="p-4 text-sm text-slate-600">
-                        <img src="https://via.placeholder.com/50" alt="Customer Image" class="w-12 h-12 rounded-full object-cover">
-                    </td>
-                    <td class="p-4 text-sm text-slate-600 space-x-2">
-                        <button class="px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                            Edit
-                        </button>
-                        <button class="px-4 py-2 text-white bg-blue-300 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <!-- Repeat the above row for additional entries -->
-                </tbody>
-            </table>
+            <div class="p-4" x-data="{ imagePreview: '' }">
+                <form>
+                    <!-- Image Upload Input -->
+                    <label for="image-upload" class="block text-sm font-medium text-gray-700">
+                        Upload Image
+                    </label>
+                    <input
+                        type="file"
+                        id="image-upload"
+                        accept="image/*"
+                        @change="let file = $event.target.files[0]; if (file) { imagePreview = URL.createObjectURL(file) }"
+                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 mt-2"
+                    >
+
+                    <!-- Image Preview -->
+                    <template x-if="imagePreview">
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-600">Image Preview:</p>
+                            <img :src="imagePreview" alt="Image Preview" class="w-full h-auto mt-2 rounded-lg shadow-md">
+                        </div>
+                    </template>
+                </form>
+            </div>
         </div>
     </div>
+
 
 
 
