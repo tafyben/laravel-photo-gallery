@@ -53,7 +53,9 @@
                                 {{ $album->id }}
                             </td>
                             <td class="p-4 text-sm text-slate-600">
-                                {{ $album->title }}
+                                <a class="text-indigo-700 hover:text-indigo-500 cursor-pointer text-lg" href="{{route('albums.show', $album->id)}}">
+                                    {{ $album->title }}
+                                </a>
                             </td>
                             <td class="p-4 text-sm text-slate-600">
                                 {{ $album->status }}

@@ -48,7 +48,11 @@ class AlbumController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Retrieve the album by ID
+        $album = Album::findOrFail($id);
+
+        // Return a view with the album data
+        return view('albums.show', compact('album'));
     }
 
     /**
@@ -107,5 +111,12 @@ class AlbumController extends Controller
 
         // Redirect back with a success message
         return redirect()->route('albums.index')->with('success', 'Album deleted successfully!');
+    }
+
+    public function upload(Request $request, Album $album){
+        if ($request->has('image')) {
+            $album->addMedia($request->image)->toMediaCollection('albums');
+        }
+        return redirect()->route('albums.index')->with('success', 'Album added successfully!');
     }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Albums - Create') }}
+           Album - {{$album->title}}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
         <div class="relative overflow-hidden rounded-lg shadow-lg bg-white">
             <div class="p-4" x-data="{ imagePreview: '', hasFile: false }">
                 <!-- Blade form -->
-                <form method="POST" action="{{ route('albums.create') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('albums.upload', $album->id) }}" enctype="multipart/form-data">
                     @csrf
 
                     <!-- Image Upload Input -->
