@@ -9,9 +9,10 @@
 
     <!-- component -->
     <div class="max-w-[720px] mx-auto p-4">
+        <!-- Image Upload Section -->
         <div class="relative overflow-hidden rounded-lg shadow-lg bg-white">
             <div class="p-4" x-data="{ imagePreview: '', hasFile: false }">
-                <!-- Blade form -->
+                <!-- Blade form for uploading images -->
                 <form method="POST" action="{{ route('albums.upload', $album->id) }}" enctype="multipart/form-data">
                     @csrf
 
@@ -30,7 +31,7 @@
                     >
 
                     <!-- Image Preview -->
-                     <template x-if="imagePreview">
+                    <template x-if="imagePreview">
                         <div class="mt-4">
                             <p class="text-sm text-gray-600">Image Preview:</p>
                             <img :src="imagePreview" alt="Image Preview" class="w-full h-auto mt-2 rounded-lg shadow-md">
@@ -47,7 +48,35 @@
                 </form>
             </div>
         </div>
+
+        <!-- Uploaded Images Display Section -->
+        <div class="mt-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Uploaded Images</h2>
+
+            @if($album->getMedia('pictures')->isNotEmpty())
+                <!-- Display uploaded images -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    @foreach($album->getMedia('pictures') as $media)
+                        <div class="relative">
+                            <img src="{{ $media->getUrl() }}" alt="Album Image" class="w-full h-auto rounded-lg shadow-md object-cover">
+                            <div class="absolute top-2 right-2">
+                            <!-- Delete Button (Optional) -->
+                            <form action="{{ route('album.destroy', $pictures->id) }}" method="POST" class="absolute top-2 right-2">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded-full hover:bg-red-600">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="text-sm text-gray-600">No images uploaded for this album yet.</p>
+            @endif
+        </div>
     </div>
+
 
 
 

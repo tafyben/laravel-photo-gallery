@@ -46,13 +46,13 @@ class AlbumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Album $album)
     {
         // Retrieve the album by ID
-        $album = Album::findOrFail($id);
+        $pictures = $album->getMedia();
 
         // Return a view with the album data
-        return view('albums.show', compact('album'));
+        return view('albums.show', compact('album', 'pictures'));
     }
 
     /**
