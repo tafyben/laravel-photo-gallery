@@ -57,12 +57,12 @@
                                 <img src="{{ $album->image_url ?? 'https://via.placeholder.com/50' }}" alt="Album Image" class="w-12 h-12 rounded-full object-cover">
                             </td>
                             <td class="p-4 text-sm text-slate-600 space-x-2">
-                                <button class="px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                                <a href="{{route('albums.edit', $album->id)}}" class="px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
                                     Edit
-                                </button>
-                                <button class="px-4 py-2 text-white bg-blue-300 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
+                                </a>
+                                <a href="{{route('albums.destroy', $album->id)}}" class="px-4 py-2 text-white bg-blue-300 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50">
                                     Delete
-                                </button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
