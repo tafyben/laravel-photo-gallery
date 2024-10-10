@@ -114,6 +114,7 @@ class AlbumController extends Controller
 
     public function upload(Request $request, Album $album){
         if ($request->has('image')) {
+            // change the collection name to pictures later
             $album->addMedia($request->image)->toMediaCollection('albums');
         }
         return redirect()->route('albums.index')->with('success', 'Album added successfully!');
