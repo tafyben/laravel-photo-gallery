@@ -53,27 +53,15 @@
         <div class="mt-8">
             <h2 class="text-xl font-bold text-gray-800 mb-4">Uploaded Images</h2>
 
-            @if($album->getMedia('pictures')->isNotEmpty())
                 <!-- Display uploaded images -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                    @foreach($album->getMedia('pictures') as $media)
+                    @foreach($photos as $photo)
                         <div class="relative">
-                            <img src="{{ $media->getUrl() }}" alt="Album Image" class="w-full h-auto rounded-lg shadow-md object-cover">
-                            <div class="absolute top-2 right-2">
-                            <!-- Delete Button (Optional) -->
-                            <form action="{{ route('album.destroy', $pictures->id) }}" method="POST" class="absolute top-2 right-2">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded-full hover:bg-red-600">
-                                    Delete
-                                </button>
-                            </form>
+                            <img src="{{ $photo->getUrl() }}" alt="Album Image" class="w-full h-auto rounded-lg shadow-md object-cover">
                         </div>
                     @endforeach
                 </div>
-            @else
-                <p class="text-sm text-gray-600">No images uploaded for this album yet.</p>
-            @endif
+
         </div>
     </div>
 

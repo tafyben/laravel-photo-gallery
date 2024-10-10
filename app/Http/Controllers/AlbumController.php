@@ -48,11 +48,10 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        // Retrieve the album by ID
-        $pictures = $album->getMedia();
+        $photos = $album->getMedia('albums');
 
-        // Return a view with the album data
-        return view('albums.show', compact('album', 'pictures'));
+        // Return a view with the album and its photos
+        return view('albums.show', compact('album', 'photos'));
     }
 
     /**
