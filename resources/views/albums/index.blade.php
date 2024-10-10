@@ -9,6 +9,10 @@
 
     <!-- component -->
     <div class="max-w-[720px] mx-auto p-4">
+        <button class="mb-4 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50">
+            Create
+        </button>
+
         <div class="relative overflow-hidden rounded-lg shadow-lg bg-white">
             <table class="w-full table-auto text-left">
                 <thead>
