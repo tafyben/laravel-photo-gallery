@@ -9,7 +9,8 @@
 
     <!-- component -->
     <div class="max-w-[720px] mx-auto p-4">
-        <form action="/your-action-url" method="POST" class="space-y-4">
+        <form action="{{route('albums.store')}}" method="POST" class="space-y-4">
+            @csrf
             <div>
                 <label for="title" class="block text-sm font-medium text-slate-700">Title</label>
                 <input type="text" id="title" name="title" class="mt-1 px-4 py-2 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="Enter title">
