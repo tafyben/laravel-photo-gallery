@@ -124,8 +124,8 @@ class AlbumController extends Controller
 
     public function showImage (Album $album, $id){
         $media = $album->getMedia('albums');
-        $image = $media->where('id', $id)->first();
+        $photo = $media->where('id', $id)->first();
 
-        return view('albums.image-show', compact('album', 'image'));
+        return view('albums.image-show', compact('album', 'photo'));
     }
 }
