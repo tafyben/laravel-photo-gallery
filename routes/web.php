@@ -20,4 +20,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('albums', [AlbumController::class, 'index'])->name('albums.index');
+Route::resource('albums', AlbumController::class)->middleware('auth');
