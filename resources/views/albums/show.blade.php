@@ -9,6 +9,11 @@
 
     <!-- component -->
     <div class="max-w-[720px] mx-auto p-4">
+        @if(session('success'))
+            <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-md">
+                {{ session('success') }}
+            </div>
+        @endif
         <!-- Image Upload Section -->
         <div class="relative overflow-hidden rounded-lg shadow-lg bg-white">
             <div class="p-4" x-data="{ imagePreview: '', hasFile: false }">

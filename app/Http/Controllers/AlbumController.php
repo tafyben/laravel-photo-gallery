@@ -134,6 +134,6 @@ class AlbumController extends Controller
         $photo = $media->where('id', $id)->first();
         $photo->delete();
 
-        return view('albums.image-show', compact('album', 'photo'));
+        return redirect()->back()->with('success', 'Image deleted successfully!');
     }
 }

@@ -10,7 +10,7 @@
     <!-- component -->
     <div class="max-w-[720px] mx-auto p-4">
         @if(session('success'))
-            <div class="mb-4 p-4 bg-green-100 text-green-700 rounded-md">
+            <div class="mb-4 p-4 bg-red-700 text-green-700 rounded-md">
                 {{ session('success') }}
             </div>
         @endif
